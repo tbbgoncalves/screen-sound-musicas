@@ -5,6 +5,7 @@ import br.com.alura.ScreenSoundMusicas.model.Musica;
 import br.com.alura.ScreenSoundMusicas.model.TipoArtista;
 import br.com.alura.ScreenSoundMusicas.repository.ArtistaRepository;
 import br.com.alura.ScreenSoundMusicas.repository.MusicaRepository;
+import br.com.alura.ScreenSoundMusicas.service.ConsultaChatGPT;
 
 import java.util.List;
 import java.util.Optional;
@@ -132,6 +133,9 @@ public class Main {
     }
 
     private void pesquisarDadosArtista() {
-    }
+        System.out.println("Digite o nome do artista:");
+        var nomeArtista = leitura.nextLine();
 
+        System.out.println(ConsultaChatGPT.pesquisarInformacaoArtista(nomeArtista));
+    }
 }
