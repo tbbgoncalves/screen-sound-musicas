@@ -65,16 +65,23 @@ public class Main {
         } while(opcao != 0);
     }
     private void cadastrarArtista() {
-        System.out.println("Digite o nome do artista:");
-        var nomeArtista = leitura.nextLine();
-        System.out.println("Digite o tipo do artista (solo, dupla, ou banda):");
-        var tipoArtista = leitura.nextLine();
+        var cadastrarNovo = "S";
 
-        Artista artista = new Artista(nomeArtista, TipoArtista.fromString(tipoArtista));
+        do {
+            System.out.println("Digite o nome do artista:");
+            var nomeArtista = leitura.nextLine();
+            System.out.println("Digite o tipo do artista (solo, dupla, ou banda):");
+            var tipoArtista = leitura.nextLine();
 
-        artistaRepository.save(artista);
+            Artista artista = new Artista(nomeArtista, TipoArtista.fromString(tipoArtista));
 
-        System.out.println("Artista salvo com sucesso");
+            artistaRepository.save(artista);
+
+            System.out.println("Artista salvo com sucesso");
+
+            System.out.println("Deseja cadastrar um novo artista? (S/N)");
+            cadastrarNovo = leitura.nextLine();
+        } while (cadastrarNovo.equalsIgnoreCase("s"));
     }
 
     private void cadastrarMusica() {

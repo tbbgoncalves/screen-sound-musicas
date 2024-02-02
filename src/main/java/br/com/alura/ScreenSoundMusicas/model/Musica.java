@@ -14,7 +14,7 @@ public class Musica {
 
     private String album;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne()
     private Artista artista;
 
     public Musica(){}
