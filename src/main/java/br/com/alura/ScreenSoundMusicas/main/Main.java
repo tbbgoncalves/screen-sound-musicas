@@ -111,6 +111,24 @@ public class Main {
     }
 
     private void buscarMusicasPorArtista() {
+        System.out.println("Digite o nome do artista:");
+        Optional<Artista> artistaBuscado = artistaRepository.buscarArtista(leitura.nextLine());
+
+        if(artistaBuscado.isPresent()) {
+            Artista artista = artistaBuscado.get();
+            List<Musica> musicas = artista.getMusicas();
+
+            if(!musicas.isEmpty()) {
+                System.out.println("Músicas de " + artista.getNome() + ":");
+                musicas.forEach(System.out::println);
+            }
+            else {
+                System.out.println("Nenhuma música cadastrada para o artista " + artista.getNome());
+            }
+        }
+        else {
+            System.out.println("Artista não cadastrado");
+        }
     }
 
     private void pesquisarDadosArtista() {
