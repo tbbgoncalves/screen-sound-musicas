@@ -14,7 +14,7 @@ public class Musica {
 
     private String album;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Artista artista;
 
     public Musica(){}
@@ -59,10 +59,9 @@ public class Musica {
     @Override
     public String toString() {
         return "Musica{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
+                "nome='" + nome + '\'' +
                 ", album='" + album + '\'' +
-                ", artista=" + artista +
+                ", artista=" + artista.getNome() +
                 '}';
     }
 }

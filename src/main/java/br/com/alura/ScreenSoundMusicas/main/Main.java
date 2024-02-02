@@ -4,7 +4,9 @@ import br.com.alura.ScreenSoundMusicas.model.Artista;
 import br.com.alura.ScreenSoundMusicas.model.Musica;
 import br.com.alura.ScreenSoundMusicas.model.TipoArtista;
 import br.com.alura.ScreenSoundMusicas.repository.ArtistaRepository;
+import br.com.alura.ScreenSoundMusicas.repository.MusicaRepository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -12,8 +14,11 @@ public class Main {
     Scanner leitura = new Scanner(System.in);
     private ArtistaRepository artistaRepository;
 
-    public Main(ArtistaRepository artistaRepository) {
+    private MusicaRepository musicaRepository;
+
+    public Main(ArtistaRepository artistaRepository, MusicaRepository musicaRepository) {
         this.artistaRepository = artistaRepository;
+        this.musicaRepository = musicaRepository;
     }
 
     public void showMenu() {
@@ -26,6 +31,7 @@ public class Main {
                 2 - Cadastrar música
                 3 - Listar músicas
                 4 - Buscar músicas por artista
+                5 - Pesquisar dados sobre um artista
                 0 - Sair
                 
                 Digite a opção desejada:""");
@@ -43,6 +49,9 @@ public class Main {
                     listarMusicas();
                     break;
                 case 4:
+                    buscarMusicasPorArtista();
+                    break;
+                case 5:
                     pesquisarDadosArtista();
                     break;
                 case 0:
@@ -91,6 +100,17 @@ public class Main {
     }
 
     private void listarMusicas() {
+        List<Musica> musicas = musicaRepository.findAll();
+
+        if(!musicas.isEmpty()) {
+            musicas.forEach(System.out::println);
+        }
+        else {
+            System.out.println("Nenhuma música cadastrada");
+        }
+    }
+
+    private void buscarMusicasPorArtista() {
     }
 
     private void pesquisarDadosArtista() {
