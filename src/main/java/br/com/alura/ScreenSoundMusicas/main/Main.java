@@ -1,9 +1,11 @@
 package br.com.alura.ScreenSoundMusicas.main;
 
 import br.com.alura.ScreenSoundMusicas.model.Artista;
+import br.com.alura.ScreenSoundMusicas.model.Musica;
 import br.com.alura.ScreenSoundMusicas.model.TipoArtista;
 import br.com.alura.ScreenSoundMusicas.repository.ArtistaRepository;
 
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Main {
@@ -65,6 +67,27 @@ public class Main {
     }
 
     private void cadastrarMusica() {
+        System.out.println("Digite o nome do artista da música:");
+        Optional<Artista> artistaMusica = artistaRepository.buscarArtista(leitura.nextLine());
+
+        if(artistaMusica.isPresent()) {
+            Artista artista = artistaMusica.get();
+
+            System.out.println("Digite o nome da música:");
+            var nome = leitura.nextLine();
+            System.out.println("Digite o nome do álbum:");
+            var album = leitura.nextLine();
+
+            Musica musica = new Musica(nome, album);
+            artista.addMusica(musica);
+
+            artistaRepository.save(artista);
+
+            System.out.println("Música salva com sucesso");
+        }
+        else {
+            System.out.println("Artista não encontrado. Realize o cadastro dele primeiramente para cadastrar a música.");
+        }
     }
 
     private void listarMusicas() {

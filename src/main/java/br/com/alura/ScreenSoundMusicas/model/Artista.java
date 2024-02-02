@@ -18,8 +18,10 @@ public class Artista {
     @Enumerated(EnumType.STRING)
     private TipoArtista tipoArtista;
 
-    @OneToMany
+    @OneToMany(mappedBy = "artista", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     List<Musica> musicas = new ArrayList();
+
+    public Artista(){}
 
     public Artista(String nome, TipoArtista tipoArtista) {
         this.nome = nome;
@@ -48,6 +50,11 @@ public class Artista {
 
     public void setTipoArtista(TipoArtista tipoArtista) {
         this.tipoArtista = tipoArtista;
+    }
+
+    public void addMusica(Musica musica) {
+        musica.setArtista(this);
+        this.musicas.add(musica);
     }
 
     public List<Musica> getMusicas() {
