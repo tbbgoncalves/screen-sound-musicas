@@ -96,8 +96,7 @@ public class Main {
             System.out.println("Digite o nome do álbum:");
             var album = leitura.nextLine();
 
-            Musica musica = new Musica(nome, album);
-            artista.addMusica(musica);
+            Musica musica = new Musica(nome, album, artista);
 
             artistaRepository.save(artista);
 

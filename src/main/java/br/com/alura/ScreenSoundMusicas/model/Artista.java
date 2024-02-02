@@ -52,11 +52,6 @@ public class Artista {
         this.tipoArtista = tipoArtista;
     }
 
-    public void addMusica(Musica musica) {
-        musica.setArtista(this);
-        this.musicas.add(musica);
-    }
-
     public List<Musica> getMusicas() {
         return musicas;
     }

@@ -19,9 +19,10 @@ public class Musica {
 
     public Musica(){}
 
-    public Musica(String nome, String album) {
+    public Musica(String nome, String album, Artista artista) {
         this.nome = nome;
         this.album = album;
+        setArtista(artista);
     }
 
     public Long getId() {
@@ -53,6 +54,7 @@ public class Musica {
     }
 
     public void setArtista(Artista artista) {
+        artista.getMusicas().add(this);
         this.artista = artista;
     }
 
