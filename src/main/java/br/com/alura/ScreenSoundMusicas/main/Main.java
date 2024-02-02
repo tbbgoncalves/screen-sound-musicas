@@ -28,7 +28,7 @@ public class Main {
 
         do {
             System.out.println("""
-                Opções Disponíveis
+                \nOpções Disponíveis
                 1 - Cadastrar artista
                 2 - Cadastrar música
                 3 - Listar músicas
@@ -102,7 +102,7 @@ public class Main {
 
             Musica musica = new Musica(nome, album, artista);
 
-            artistaRepository.save(artista);
+            musicaRepository.save(musica);
 
             System.out.println("Música salva com sucesso");
         }
