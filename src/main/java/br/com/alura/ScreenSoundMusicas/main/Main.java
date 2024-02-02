@@ -32,8 +32,9 @@ public class Main {
                 1 - Cadastrar artista
                 2 - Cadastrar música
                 3 - Listar músicas
-                4 - Buscar músicas por artista
-                5 - Pesquisar dados sobre um artista
+                4 - Listar artistas
+                5 - Buscar músicas por artista
+                6 - Pesquisar dados sobre um artista
                 0 - Sair
                 
                 Digite a opção desejada:""");
@@ -51,9 +52,12 @@ public class Main {
                     listarMusicas();
                     break;
                 case 4:
-                    buscarMusicasPorArtista();
+                    listarArtistas();
                     break;
                 case 5:
+                    buscarMusicasPorArtista();
+                    break;
+                case 6:
                     pesquisarDadosArtista();
                     break;
                 case 0:
@@ -115,6 +119,17 @@ public class Main {
         }
         else {
             System.out.println("Nenhuma música cadastrada");
+        }
+    }
+
+    private void listarArtistas() {
+        List<Artista> artistas = artistaRepository.findAll();
+
+        if(!artistas.isEmpty()) {
+            artistas.forEach(System.out::println);
+        }
+        else {
+            System.out.println("Nenhum artista cadastrado");
         }
     }
 
